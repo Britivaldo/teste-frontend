@@ -3,17 +3,18 @@ import MyMap from './MyMap'
 import SearchBar from './SearchBar'
 import {connect} from 'react-redux'
 
-function Content() {
+function Content(props) {
+  const { showBar } = props
   return (
-      <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <SearchBar handleClick={() => {}}/>
+      <main className="col-md-9 ms-sm-auto col-lg-10 col-sm-11 px-md-4">
+        {showBar ? <SearchBar /> : null}
         <MyMap />   
       </main>    
   )
 }
 
-// const MapStateToProps = (state) => ({
-//   setHandler: 
-// })
+const MapStateToProps = (state) => ({
+  showBar: state.searchBar.showSearchBar,
+})
 
-export default connect(null)(Content)
+export default connect(MapStateToProps)(Content)

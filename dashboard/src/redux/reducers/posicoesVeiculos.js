@@ -1,7 +1,6 @@
-import { POSICAO_VEICULOS_1, POSICAO_VEICULOS_2, SEARCH_POSICAO_LINHA } from "../types";
-import { posicaoVeiculosLinha } from "../actions/posicoesVeiculos";
+import { POSICAO_VEICULOS_1, POSICAO_VEICULOS_2, POSICAO_VEICULOS_3 } from "../types";
 const initialState = {
-  showSearchBar: false
+  isLoading: false
 }
 const foo = (state = initialState, {type, payload}) => {
   switch(type) {
@@ -15,11 +14,10 @@ const foo = (state = initialState, {type, payload}) => {
         ...state,
         item: payload
       }
-    case SEARCH_POSICAO_LINHA:
+    case POSICAO_VEICULOS_3:
       return {
         ...state,
-        action: posicaoVeiculosLinha,
-        tipo: "Linha"
+        item: payload
       }
     default: 
       return state

@@ -1,22 +1,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { connect } from 'react-redux';
-import { posicaoVeiculosLinha } from '../redux/actions/posicoesVeiculos'
+import { posicaoVeiculosLinha, posicaoVeiculosGaragem } from '../redux/actions/posicoesVeiculos'
 
 function SearchBar(props) {
-  const { tipo, action, getCurrentPositionByLine } = props
+  const { tipo, action, getCurrentPositionByLine, getCurrentPositionByGarage, item } = props
   const [handler, setHandler] = React.useState({ foo: () => {}})
   const inputEl = React.useRef(null)
   React.useEffect(() => {
     switch(action) {
       case 'buscar_posicao_linha':
-        console.log('mudei')
         setHandler({foo: getCurrentPositionByLine})
+        break
+      case 'buscar_posicao_garagem':
+        setHandler({foo: getCurrentPositionByGarage})
         break
       default:
         break
     }
   }, [action])
+  React.useEffect(() =>{
+    inputEl.current.value = ""
+  }, [item])
   return (
     <div className="d-flex py-3">
       <div className="navbar-nav">
@@ -25,7 +32,7 @@ function SearchBar(props) {
           onClick={() => handler.foo(inputEl.current.value || 0)}
           type="button"
           className="btn btn-info">
-            {tipo}
+            <FontAwesomeIcon icon={ faSearch }/>
           </button>
         </div>
       </div>
@@ -33,19 +40,21 @@ function SearchBar(props) {
       ref={inputEl}
       className="form-control form-control-dark w-100"
       type="text"
-      placeholder="Search"
+      placeholder={tipo}
       aria-label="Search"/>
     </div>
   )
 }
 
 const MapStateToProps = (state) => ({
+  action: state.searchBar.action,
   tipo: state.searchBar.tipo,
-  action: state.searchBar.action
+  item: state.posicoesVeiculos.item
 })
 
 const MapDispatchToProps = (dispatch) => ({
-  getCurrentPositionByLine: (value) => dispatch(posicaoVeiculosLinha(value))
+  getCurrentPositionByLine: (value) => dispatch(posicaoVeiculosLinha(value)),
+  getCurrentPositionByGarage: (value) => dispatch(posicaoVeiculosGaragem(value))
 })
 
 export default connect(MapStateToProps, MapDispatchToProps)(SearchBar)
