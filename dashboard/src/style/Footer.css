@@ -1,0 +1,9 @@
+.linkedin {
+  color: aqua;
+  text-decoration: none;
+}
+
+.linkedin:hover {
+  color: aqua;
+  text-decoration: underline
+}
