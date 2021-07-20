@@ -1,6 +1,7 @@
 import React from "react"
 import { Map, Marker } from "pigeon-maps"
 import { connect } from "react-redux"
+import PropTypes from 'prop-types'
 
 function MyMap(props) {
   const { posicao } = props
@@ -32,5 +33,7 @@ function MyMap(props) {
 const MapStateToProps = (state) => ({
   posicao: state.posicoesVeiculos.item
 })
+
+MyMap.propTypes = PropTypes.shape({}).isRequired
 
 export default connect(MapStateToProps)(MyMap)

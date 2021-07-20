@@ -2,7 +2,7 @@ import { POSICAO_VEICULOS_1, POSICAO_VEICULOS_2, POSICAO_VEICULOS_3 } from "../t
 const initialState = {
   isLoading: false
 }
-const foo = (state = initialState, {type, payload}) => {
+export default (state = initialState, {type, payload}) => {
   switch(type) {
     case POSICAO_VEICULOS_1:
       return {
@@ -23,5 +23,3 @@ const foo = (state = initialState, {type, payload}) => {
       return state
   }
 }
-
-export default foo;

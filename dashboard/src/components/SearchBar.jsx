@@ -1,12 +1,15 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { posicaoVeiculosLinha, posicaoVeiculosGaragem } from '../redux/actions/posicoesVeiculos'
 
+
 function SearchBar(props) {
-  const { tipo, action, getCurrentPositionByLine, getCurrentPositionByGarage, item } = props
+  const { 
+    tipo, action, getCurrentPositionByLine,
+    getCurrentPositionByGarage, item } = props
   const [handler, setHandler] = React.useState({ foo: () => {}})
   const inputEl = React.useRef(null)
   React.useEffect(() => {
@@ -56,5 +59,7 @@ const MapDispatchToProps = (dispatch) => ({
   getCurrentPositionByLine: (value) => dispatch(posicaoVeiculosLinha(value)),
   getCurrentPositionByGarage: (value) => dispatch(posicaoVeiculosGaragem(value))
 })
+
+SearchBar.propTypes = PropTypes.shape({}).isRequired
 
 export default connect(MapStateToProps, MapDispatchToProps)(SearchBar)

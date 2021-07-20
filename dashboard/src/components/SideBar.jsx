@@ -3,21 +3,18 @@ import LargerBar from './LargerBar'
 import { connect } from "react-redux"
 import { posicaoVeiculos, actionSearchBarPosicaoLinha, actionSearchBarPosicaoGaragem } from '../redux/actions/posicoesVeiculos'
 import '../style/SideBar.css'
-import SmallBar from './SmallBar'
+import PropTypes from 'prop-types'
 
 function SideBar(props) {
   const {getCurrentPositionAll, setSearchBarLinha, setSearchBarGaragem} = props
   
   return (
-    <>
-      <SmallBar
-      getCurrentPositionAll={getCurrentPositionAll}
-       />
+    
       <LargerBar
       getCurrentPositionAll={getCurrentPositionAll}
       setSearchBarLinha={setSearchBarLinha}
       setSearchBarGaragem={setSearchBarGaragem} />
-    </>
+  
   )
 }
 
@@ -26,5 +23,7 @@ const MapDispatchToProps = (dispatch) => ({
   setSearchBarLinha: () => dispatch(actionSearchBarPosicaoLinha()),
   setSearchBarGaragem: () => dispatch(actionSearchBarPosicaoGaragem())
 })
+
+SideBar.propTypes = PropTypes.shape({}).isRequired
 
 export default connect(null, MapDispatchToProps)(SideBar)

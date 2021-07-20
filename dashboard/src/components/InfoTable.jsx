@@ -1,38 +1,57 @@
 import React from 'react'
+import SearchBar from './SearchBar'
+import PropTypes from 'prop-types'
+import { actionFetchInfoLinhas1 } from '../redux/actions/infoLinhas.js';
+import { connect } from 'react-redux';
 
-export default function InfoTable() {
+function InfoTable(props) {
+  const { infos, getInfos } = props
   return (
-    <div className="col-md-9 ms-sm-auto col-lg-10 col-sm-11 px-md-4">
-      
+    
+    <div className="d-none d-md-flex flex-column col-md-9 ms-sm-auto col-lg-10 col-sm-11 px-md-4">
+      <button
+      onClick={() => getInfos('Lapa')}
+      className="btn btn-sm btn-dark">
+        buscar
+      </button>
       <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">ID</th>
+            <th scope="col">Circular</th>
+            <th scope="col">Sentido</th>
+            <th scope="col">Legenda(Principal)</th>
+            <th scope="col">Legenda(Secundário)</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {infos.map((info, index) => (
+            <React.Fragment key={info.cl}>
+                <tr>
+                  <th scope="row">{index + 1}</th>
+                  <td>{info.cl}</td>
+                  <td>{info.lc ? 'Sim' : 'Não'}</td>
+                  <td>{info.sl === 1 ? 'Principal' : 'Secundário' }</td>
+                  <td>{info.tp}</td>
+                  <td>{info.ts}</td>
+                </tr>
+            </React.Fragment>
+          ))}
         </tbody>
       </table>
     </div>
   )
 }
+
+const MapStateToProps = (state) => ({
+  infos: state.infoLinhas.info
+})
+
+const MapDispatchToProps = (dispatch) => ({
+  getInfos: (value) => dispatch(actionFetchInfoLinhas1(value))
+})
+
+InfoTable.propTypes = PropTypes.shape({}).isRequired
+
+export default connect(MapStateToProps, MapDispatchToProps)(InfoTable)

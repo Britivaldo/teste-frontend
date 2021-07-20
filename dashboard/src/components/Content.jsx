@@ -2,6 +2,7 @@ import React from 'react'
 import MyMap from './MyMap'
 import SearchBar from './SearchBar'
 import {connect} from 'react-redux'
+import PropTypes from 'prop-types'
 
 function Content(props) {
   const { showBar } = props
@@ -16,5 +17,7 @@ function Content(props) {
 const MapStateToProps = (state) => ({
   showBar: state.searchBar.showSearchBar,
 })
+
+Content.propTypes = PropTypes.shape({}).isRequired
 
 export default connect(MapStateToProps)(Content)
