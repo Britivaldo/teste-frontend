@@ -1,17 +1,24 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import Content from './Content'
 import InfoTable from './InfoTable'
 import SideBar from './SideBar'
 import PropTypes from 'prop-types'
 
-export default function Main() {
-  const [showInfo, setShowInfo] = React.useState(true)
+function Main(props) {
+  const { showInfo } = props
   return (
     <div className="row">
       <SideBar/>
-      <InfoTable/>
+      {showInfo ? <InfoTable/> : <Content/>}
     </div>
   )
 }
 
-Main.proptypes = PropTypes.shape({}).isRequired
+const MapStateToProps = (state) => ({
+  showInfo: state.searchBar.showInfo,
+})
+
+Main.propTypes = PropTypes.shape({}).isRequired
+
+export default connect(MapStateToProps)(Main)

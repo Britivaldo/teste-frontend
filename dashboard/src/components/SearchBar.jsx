@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { posicaoVeiculosLinha, posicaoVeiculosGaragem } from '../redux/actions/posicoesVeiculos'
+import { posicaoVeiculosLinha, posicaoVeiculosGaragem } from '../redux/actions/posicoesVeiculos';
+import { actionFetchInfoLinhas1 } from '../redux/actions/infoLinhas.js';
+import { actionFetchPrevChegada } from '../redux/actions/infoPrevChegada'
 
 
 function SearchBar(props) {
   const { 
-    tipo, action, getCurrentPositionByLine,
-    getCurrentPositionByGarage, item } = props
+    tipo, action, getCurrentPositionByLine, getInfoPrev,
+    getInfoLinha, getCurrentPositionByGarage, item } = props
   const [handler, setHandler] = React.useState({ foo: () => {}})
   const inputEl = React.useRef(null)
   React.useEffect(() => {
@@ -20,9 +22,16 @@ function SearchBar(props) {
       case 'buscar_posicao_garagem':
         setHandler({foo: getCurrentPositionByGarage})
         break
+      case "pesquisa_linha":
+        setHandler({foo: getInfoLinha})
+        break
+      case "pesquisa_previsao":
+        setHandler({foo: getInfoPrev})
+        break
       default:
         break
     }
+    inputEl.current.value=""
   }, [action])
   React.useEffect(() =>{
     inputEl.current.value = ""
@@ -57,7 +66,9 @@ const MapStateToProps = (state) => ({
 
 const MapDispatchToProps = (dispatch) => ({
   getCurrentPositionByLine: (value) => dispatch(posicaoVeiculosLinha(value)),
-  getCurrentPositionByGarage: (value) => dispatch(posicaoVeiculosGaragem(value))
+  getCurrentPositionByGarage: (value) => dispatch(posicaoVeiculosGaragem(value)),
+  getInfoLinha: (value) => dispatch(actionFetchInfoLinhas1(value)),
+  getInfoPrev: (value) => dispatch(actionFetchPrevChegada(value))
 })
 
 SearchBar.propTypes = PropTypes.shape({}).isRequired

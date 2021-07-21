@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 
 function MyMap(props) {
   const { posicao } = props
-  const [coordinates, setCoordinates] = React.useState([[-23.618237, -46.635197]])
-  // const [markers, setMarkers] = React.useState([0])
+  const [coordinates, setCoordinates] = React.useState([[]])
   React.useEffect(() => {
     try {
       const arr = [...posicao.l]
@@ -24,7 +23,7 @@ function MyMap(props) {
   return (
     <Map height={425} defaultCenter={[-23.618237, -46.635197]} defaultZoom={10}>
       {coordinates.map((coord, index) => (
-        <Marker key={index} width={25} anchor={[coord[0], coord[1]]} />
+        <Marker key={index} width={38} anchor={[coord[0], coord[1]]} />
       ))}
     </Map>
   )

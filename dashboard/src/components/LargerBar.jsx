@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 
 export default function LargerBar(props) {
-  const {getCurrentPositionAll, setSearchBarLinha, setSearchBarGaragem} = props
+  const { 
+    getCurrentPositionAll, setSearchBarLinha, setSearchBarGaragem,
+    setSearchInfoLinha, setSearchInfoPrev } = props
   return (
     <nav id="sidebarMenu" className="col-sm-3 col-lg-2 d-md-block bg-dark sidebar collapse">
       <div className="position-sticky pt-3">
@@ -15,7 +17,7 @@ export default function LargerBar(props) {
             data-bs-toggle="collapse" data-bs-target="#pos-collapse" aria-expanded="true">
               <FontAwesomeIcon icon={faMapMarkedAlt} /> Trânsito
             </button>
-            <div className="collapse show" id="pos-collapse">
+            <div className="collapse" id="pos-collapse">
               <div className="container d-flex flex-column" role="group" aria-label="Basic example">
                 <button
                 onClick={getCurrentPositionAll}
@@ -47,14 +49,16 @@ export default function LargerBar(props) {
             <div className="collapse" id="info-collapse">
               <div className="container d-flex flex-column" role="group" aria-label="Basic example">
                 <button
+                onClick={setSearchInfoLinha}
                 type="button"
                 className="btn btn-warning btn-sm my-2">
-                  Texto 1
+                  Linha
                 </button>
                 <button
+                onClick={setSearchInfoPrev}
                 type="button"
                 className="btn btn-warning btn-sm mb-2">
-                  Texto 2
+                  Hora de chegada
                 </button>
               </div>
             </div>

@@ -24,6 +24,7 @@ export const actionSearchBarPosicaoGaragem = () => ({
   type: SEARCH_POSICAO_GARAGEM,
 })
 
+
 export function posicaoVeiculos() {
   return (dispatch) => fetchPosicao()
     .then((res) => dispatch(actionPosicaoVeiculos1(res)))
