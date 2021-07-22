@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { posicaoVeiculos, actionSearchBarPosicaoLinha, actionSearchBarPosicaoGaragem } from '../redux/actions/posicoesVeiculos'
+import { actionSearchInfoParadaMap } from '../redux/actions/infoParadas'
 import { connect } from 'react-redux'
 
 function Header(props) {
-  const {getCurrentPositionAll, setSearchBarLinha, setSearchBarGaragem} = props
+  const {getCurrentPositionAll, setSearchBarLinha, setSearchBarGaragem, setSearchInfoParadaMap } = props
   return (
     <>
       <div className="container-fluid d-flex justify-content-between align-items-center d-md-none bg-dark">
@@ -17,6 +18,7 @@ function Header(props) {
             <li><a className="dropdown-item" onClick={getCurrentPositionAll} href="#">Completo</a></li>
             <li><a className="dropdown-item" onClick={setSearchBarLinha} href="#">Por linha</a></li>
             <li><a className="dropdown-item" onClick={setSearchBarGaragem} href="#">Por empresa</a></li>
+            <li><a className="dropdown-item" onClick={setSearchInfoParadaMap} href="#">Paradas</a></li>
           </ul>
         </div>
       </div>
@@ -34,7 +36,9 @@ function Header(props) {
 const MapDispatchToProps = (dispatch) => ({
   getCurrentPositionAll: () => dispatch(posicaoVeiculos()),
   setSearchBarLinha: () => dispatch(actionSearchBarPosicaoLinha()),
-  setSearchBarGaragem: () => dispatch(actionSearchBarPosicaoGaragem())
+  setSearchBarGaragem: () => dispatch(actionSearchBarPosicaoGaragem()),
+  setSearchInfoParadaMap: () => dispatch(actionSearchInfoParadaMap()),
+  
 })
 
 Header.propTypes = PropTypes.shape({}).isRequired

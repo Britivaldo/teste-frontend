@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 export default function LargerBar(props) {
   const { 
     getCurrentPositionAll, setSearchBarLinha, setSearchBarGaragem,
-    setSearchInfoLinha, setSearchInfoPrev } = props
+    setSearchInfoLinha, setSearchInfoPrev, setSearchInfoParada,
+    setSearchInfoParadaMap } = props
   return (
     <nav id="sidebarMenu" className="col-sm-3 col-lg-2 d-md-block bg-dark sidebar collapse">
       <div className="position-sticky pt-3">
@@ -22,20 +23,26 @@ export default function LargerBar(props) {
                 <button
                 onClick={getCurrentPositionAll}
                 type="button"
-                className="btn btn-warning btn-sm my-2">
+                className="btn btn-outline-warning btn-sm my-2">
                   Completo
                 </button>
                 <button
                 onClick={setSearchBarLinha}
                 type="button"
-                className="btn btn-warning btn-sm mb-2">
+                className="btn btn-outline-warning btn-sm mb-2">
                   Linha
                 </button>
                 <button
                 onClick={setSearchBarGaragem}
                 type="button"
-                className="btn btn-warning btn-sm mb-2">
+                className="btn btn-outline-warning btn-sm mb-2">
                   Empresa
+                </button>
+                <button
+                onClick={setSearchInfoParadaMap}
+                type="button"
+                className="btn btn-outline-warning btn-sm mb-2">
+                  Paradas
                 </button>
               </div>
             </div>
@@ -51,14 +58,20 @@ export default function LargerBar(props) {
                 <button
                 onClick={setSearchInfoLinha}
                 type="button"
-                className="btn btn-warning btn-sm my-2">
+                className="btn btn-outline-warning btn-sm my-2">
                   Linha
                 </button>
                 <button
                 onClick={setSearchInfoPrev}
                 type="button"
-                className="btn btn-warning btn-sm mb-2">
+                className="btn btn-outline-warning btn-sm mb-2">
                   Hora de chegada
+                </button>
+                <button
+                onClick={setSearchInfoParada}
+                type="button"
+                className="btn btn-outline-warning btn-sm mb-2">
+                  Lista de Paradas
                 </button>
               </div>
             </div>

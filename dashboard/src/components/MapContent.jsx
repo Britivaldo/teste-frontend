@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-function Content(props) {
+function MapContent(props) {
   const { showBar } = props
   return (
       <main className="col-md-9 ms-sm-auto col-lg-10 col-sm-11 px-md-4">
@@ -18,6 +18,6 @@ const MapStateToProps = (state) => ({
   showBar: state.searchBar.showSearchBar,
 })
 
-Content.propTypes = PropTypes.shape({}).isRequired
+MapContent.propTypes = PropTypes.shape({}).isRequired
 
-export default connect(MapStateToProps)(Content)
+export default connect(MapStateToProps)(MapContent)

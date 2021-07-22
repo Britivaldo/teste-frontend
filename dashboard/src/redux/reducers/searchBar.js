@@ -15,14 +15,14 @@ const foo = (state = initialState, {type}) => {
       return {
         showSearchBar: true,
         showInfo: false,
-        tipo: 'Número da Linha',
+        tipo: 'Digite ID da Linha',
         action: "buscar_posicao_linha"
       }
     case SEARCH_POSICAO_GARAGEM:
       return {
         showSearchBar: true,
         showInfo: false,
-        tipo: 'Código da Empresa',
+        tipo: 'Digite ID da Empresa',
         action: "buscar_posicao_garagem"
       }
     case POSICAO_VEICULOS_1:
@@ -40,7 +40,7 @@ const foo = (state = initialState, {type}) => {
         infoPrev: false,
         infoParada: false,
         infoLinha: true,
-        tipo: 'Nome/Número da Linha',
+        tipo: 'Digite nome da Linha',
         action: "pesquisa_linha"
       }
     case SEARCH_INFO_PREV:
@@ -51,7 +51,7 @@ const foo = (state = initialState, {type}) => {
         infoLinha: false,
         infoPrev: true,
         infoParada: false,
-        tipo: 'Código da Parada',
+        tipo: 'Digite ID da Parada',
         action: "pesquisa_previsao"
       }
     case SEARCH_INFO_PARADAS:
@@ -62,7 +62,7 @@ const foo = (state = initialState, {type}) => {
         infoLinha: false,
         infoPrev: false,
         infoParada: true,
-        tipo: 'Endereço ou localização',
+        tipo: 'Digite endereço ou localização',
         action: "pesquisa_parada"
       }
     case SEARCH_INFO_PARADAS_MAP:
@@ -70,7 +70,7 @@ const foo = (state = initialState, {type}) => {
         ...state,
         showSearchBar: true,
         showInfo: false,
-        tipo: 'Endereço ou localização',
+        tipo: 'Digite endereço ou localização',
         action: "pesquisa_parada"
       }
     default: 

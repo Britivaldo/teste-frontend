@@ -5,12 +5,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { posicaoVeiculosLinha, posicaoVeiculosGaragem } from '../redux/actions/posicoesVeiculos';
 import { actionFetchInfoLinhas1 } from '../redux/actions/infoLinhas.js';
-import { actionFetchPrevChegada } from '../redux/actions/infoPrevChegada'
+import { actionFetchPrevChegada,  } from '../redux/actions/infoPrevChegada'
+import { actionFetchInfoParada } from '../redux/actions/infoParadas';
 
 
 function SearchBar(props) {
   const { 
-    tipo, action, getCurrentPositionByLine, getInfoPrev,
+    tipo, action, getCurrentPositionByLine, getInfoPrev, getInfoParada,
     getInfoLinha, getCurrentPositionByGarage, item } = props
   const [handler, setHandler] = React.useState({ foo: () => {}})
   const inputEl = React.useRef(null)
@@ -27,6 +28,9 @@ function SearchBar(props) {
         break
       case "pesquisa_previsao":
         setHandler({foo: getInfoPrev})
+        break
+      case "pesquisa_parada":
+        setHandler({foo: getInfoParada})
         break
       default:
         break
@@ -68,7 +72,8 @@ const MapDispatchToProps = (dispatch) => ({
   getCurrentPositionByLine: (value) => dispatch(posicaoVeiculosLinha(value)),
   getCurrentPositionByGarage: (value) => dispatch(posicaoVeiculosGaragem(value)),
   getInfoLinha: (value) => dispatch(actionFetchInfoLinhas1(value)),
-  getInfoPrev: (value) => dispatch(actionFetchPrevChegada(value))
+  getInfoPrev: (value) => dispatch(actionFetchPrevChegada(value)),
+  getInfoParada: (value) => dispatch(actionFetchInfoParada(value))
 })
 
 SearchBar.propTypes = PropTypes.shape({}).isRequired

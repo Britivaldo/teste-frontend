@@ -4,12 +4,14 @@ import { connect } from "react-redux"
 import { posicaoVeiculos, actionSearchBarPosicaoLinha, actionSearchBarPosicaoGaragem } from '../redux/actions/posicoesVeiculos'
 import { actionSearchInfoLinha } from '../redux/actions/infoLinhas'
 import { actionSearchInfoPrev } from '../redux/actions/infoPrevChegada' 
+import { actionSearchInfoParada, actionSearchInfoParadaMap } from '../redux/actions/infoParadas'; 
 import '../style/SideBar.css'
 import PropTypes from 'prop-types'
 
 function SideBar(props) {
-  const { getCurrentPositionAll,setSearchBarLinha, setSearchBarGaragem
-    ,setSearchInfoLinha, setSearchInfoPrev} = props
+  const { getCurrentPositionAll,setSearchBarLinha, setSearchBarGaragem,
+    setSearchInfoLinha, setSearchInfoPrev, setSearchInfoParada,
+    setSearchInfoParadaMap } = props
   
   return (
     
@@ -18,7 +20,9 @@ function SideBar(props) {
       setSearchBarLinha={setSearchBarLinha}
       setSearchBarGaragem={setSearchBarGaragem}
       setSearchInfoLinha={setSearchInfoLinha}
-      setSearchInfoPrev={setSearchInfoPrev} />
+      setSearchInfoPrev={setSearchInfoPrev}
+      setSearchInfoParada={setSearchInfoParada}
+      setSearchInfoParadaMap={setSearchInfoParadaMap} />
   
   )
 }
@@ -28,7 +32,9 @@ const MapDispatchToProps = (dispatch) => ({
   setSearchBarLinha: () => dispatch(actionSearchBarPosicaoLinha()),
   setSearchBarGaragem: () => dispatch(actionSearchBarPosicaoGaragem()),
   setSearchInfoLinha: () => dispatch(actionSearchInfoLinha()),
-  setSearchInfoPrev: () => dispatch(actionSearchInfoPrev())
+  setSearchInfoPrev: () => dispatch(actionSearchInfoPrev()),
+  setSearchInfoParada: () => dispatch(actionSearchInfoParada()),
+  setSearchInfoParadaMap: () => dispatch(actionSearchInfoParadaMap())
 })
 
 SideBar.propTypes = PropTypes.shape({}).isRequired

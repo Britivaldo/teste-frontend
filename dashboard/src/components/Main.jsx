@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import Content from './Content'
+import MapContent from './MapContent'
 import InfoTable from './InfoTable'
 import SideBar from './SideBar'
 import PropTypes from 'prop-types'
@@ -10,7 +10,7 @@ function Main(props) {
   return (
     <div className="row">
       <SideBar/>
-      {showInfo ? <InfoTable/> : <Content/>}
+      {showInfo ? <InfoTable/> : <MapContent/>}
     </div>
   )
 }

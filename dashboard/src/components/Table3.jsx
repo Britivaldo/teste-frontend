@@ -1,8 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { actionFetchPrevChegada, actionSearchInfoPrev  } from '../redux/actions/infoPrevChegada'
+import '../style/Table.css'
 
-export default function Table2(props) {
-  const { infos } = props
+function Table3(props) {
+  const { infos, setSearchInfoPrev, getInfoPrev } = props
+  function goToTableParadas(value) {
+    getInfoPrev(value)
+    setSearchInfoPrev()
+  }
   return (
     <table className="table table-hover">
         <thead>
@@ -13,10 +20,10 @@ export default function Table2(props) {
             <th scope="col">Endereço</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="tolink">
           {infos.map((info, index) => (
-            <React.Fragment key={info.cl}>
-                <tr>
+            <React.Fragment key={index}>
+                <tr onClick={() => goToTableParadas(info.cp)}>
                   <th scope="row">{index + 1}</th>
                   <td>{info.cp}</td>
                   <td>{info.np}</td>
@@ -29,4 +36,11 @@ export default function Table2(props) {
   )
 }
 
-Table2.propTypes = PropTypes.shape({}).isRequired
+const MapDispatchToProps = (dispatch) => ({
+  setSearchInfoPrev: () => dispatch(actionSearchInfoPrev()),
+  getInfoPrev: (value) => dispatch(actionFetchPrevChegada(value)),
+})
+
+Table3.propTypes = PropTypes.shape({}).isRequired
+
+export default connect(null, MapDispatchToProps)(Table3)
