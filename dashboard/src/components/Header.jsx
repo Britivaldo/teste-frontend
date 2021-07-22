@@ -16,8 +16,8 @@ function Header(props) {
           </button>
           <ul className="dropdown-menu">
             <li><a className="dropdown-item" onClick={getCurrentPositionAll} href="#">Completo</a></li>
-            <li><a className="dropdown-item" onClick={setSearchBarLinha} href="#">Por linha</a></li>
-            <li><a className="dropdown-item" onClick={setSearchBarGaragem} href="#">Por empresa</a></li>
+            <li><a className="dropdown-item" onClick={setSearchBarLinha} href="#">Linha</a></li>
+            <li><a className="dropdown-item" onClick={setSearchBarGaragem} href="#">Garagem</a></li>
             <li><a className="dropdown-item" onClick={setSearchInfoParadaMap} href="#">Paradas</a></li>
           </ul>
         </div>

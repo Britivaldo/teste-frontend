@@ -36,7 +36,7 @@ export default function LargerBar(props) {
                 onClick={setSearchBarGaragem}
                 type="button"
                 className="btn btn-outline-warning btn-sm mb-2">
-                  Empresa
+                  Garagem
                 </button>
                 <button
                 onClick={setSearchInfoParadaMap}
