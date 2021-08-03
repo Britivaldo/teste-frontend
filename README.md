@@ -1,24 +1,15 @@
-# dashboard
+# Dashboard
 
-## Project setup
+## Instalar dependências
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+## Executar o projeto
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Link do vídeo 
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+https://youtu.be/z_aLMH8aaDs
